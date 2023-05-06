@@ -1,9 +1,34 @@
 # Raspberry Pi PWM Fan Control
 
-This is a simple script to control your pwm fan on raspberry pi.
+This script can run in background on a Raspberry Pi to control the RPM of a 5V Noctua fan via PWM, based on the CPU temperature of th Pi.
 
-Here's how I wiring the PWM fan on pi:
+The original code was created by [DriftKingTW](https://github.com/DriftKingTW), and keeps my Raspberry Pi Cluster perfectly cool.
 
-English: [Using Raspberry Pi to Control a PWM Fan and Monitor its Speed](https://blog.driftking.tw/en/2019/11/Using-Raspberry-Pi-to-Control-a-PWM-Fan-and-Monitor-its-Speed/)
+## Install
 
-中文：[利用 Raspberry Pi 控制 PWM 風扇及轉速偵測](https://blog.driftking.tw/2019/11/Using-Raspberry-Pi-to-Control-a-PWM-Fan-and-Monitor-its-Speed/)
+Create a folder on your Pi
+```
+mkdir python-scripts
+cd mkdir 
+```
+Download the script 
+```
+wget https://raw.githubusercontent.com/JKL453/raspi-fan-control/master/fan_control.py
+```
+Start the script with
+```
+python fan_control.py
+```
+and add it to auto start by editing ```rc.local```
+```
+sudo nano /etc/rc.local
+```
+and add this before ```exit 0```
+```
+python /home/pi/Scripts/fan_control.py &
+```
+
+Restart the Pi to make sure everything works as expected.
+
+
+
